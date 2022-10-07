@@ -1,0 +1,15 @@
+#Whitelisted Folders
+*
+!*/
+# Git essentials
+!.gitignore
+!.gitattributes
+!/LICENSE
+
+#Core Folders and all subfolders
+!/AWS/**
+!/Collaborator/**
+!/Deliverables/**
+!/Snippets/**
+
+
