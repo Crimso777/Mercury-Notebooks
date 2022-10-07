@@ -7,6 +7,8 @@
 !/LICENSE
 
 #Core Folders and all subfolders
+!/AWS
+
 !/AWS/**
 !/Collaborator/**
 !/Deliverables/**
