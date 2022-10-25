@@ -1,0 +1,7 @@
+Create new [type] Cell
+Insert [type] Cell to [pos]
+Move [type] cell (up/down)
+delete cell {num/current cell}
+run cell
+run all cells
+read cell
