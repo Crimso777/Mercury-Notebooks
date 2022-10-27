@@ -63,6 +63,7 @@ for sentence in input_sentences:
         print('  {:.4f} {}'.format(sc[1][0], commands[sc[0]]))
 
 
+# Find possible variables
 for i, command in enumerate(solid_match):
     var = None
     if "[type]" in command:
@@ -81,7 +82,12 @@ for i, command in enumerate(solid_match):
       else:
         var = "Unknown"
         # TODO: GETVAR
+    # TODO: get optional{} vars from commands
     print(f"current command: {input_sentences[i]}\n intepreted as: {command}\n has var: {var}")
 
-
 # Execute command
+
+    # run that command
+    # TODO: map command to function call
+
+
