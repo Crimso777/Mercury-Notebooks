@@ -46,6 +46,7 @@ embeddings = model.encode(commands)
 # This executes the matching statements, all we should need to do is map a command in the command file to executing a function in ../Collaborator/{func}
 # We can use the matched command that has 90%+ confidence, if under 90% we can respond back a "command not found"
 print('\nResults:')
+solid_match = []
 for sentence in input_sentences:
     emb = model.encode(sentence)
     cos_sim = util.cos_sim(embeddings, [emb])
@@ -56,7 +57,31 @@ for sentence in input_sentences:
     sorted_sentence_combinations = sorted(sentence_combinations, key=lambda x: x[1], reverse=True)
     # show
     print('> {}'.format(sentence))
-    for i, sc in enumerate(sorted_sentence_combinations[0:3]):
+    # top sort is best fit:
+    for i, sc in enumerate(sorted_sentence_combinations[0:1]):
+        solid_match.append(commands[sc[0]])
         print('  {:.4f} {}'.format(sc[1][0], commands[sc[0]]))
+
+
+for i, command in enumerate(solid_match):
+    var = None
+    if "[type]" in command:
+        if "code" in input_sentences[i]:
+          var = "code"
+        elif "text" in input_sentences[i]:
+          var = "text"
+        else:
+          var = "Unkown"
+          # TODO: GETVAR
+    elif "[up/down]" in command:
+      if "up" in input_sentences[i]:
+        var = "up"
+      elif "down" in input_sentences[i]:
+        var = "down"
+      else:
+        var = "Unknown"
+        # TODO: GETVAR
+    print(f"current command: {input_sentences[i]}\n intepreted as: {command}\n has var: {var}")
+
 
 # Execute command

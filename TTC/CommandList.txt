@@ -1,6 +1,6 @@
 Create new [type] Cell
-Insert [type] Cell to [pos]
-Move [type] cell (up/down)
+Insert [type] Cell to {num/current_above}
+Move cell [up/down]
 delete cell {num/current cell}
 run cell
 run all cells
