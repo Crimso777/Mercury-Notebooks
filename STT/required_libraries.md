@@ -1,0 +1,4 @@
+speechrecognition
+pyttsx3
+ffmpeg
+pyaudio
