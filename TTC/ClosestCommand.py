@@ -73,7 +73,10 @@ for i, command in enumerate(solid_match):
           var = "text"
         else:
           var = "Unkown"
-          # TODO: GETVAR
+          # TODO: REPLACE ABOVE WITH 
+          # 1. Ask user to provide a correct input for this command
+          # 2. Call Speech to Text command
+          # 3. Preprocess text for passing to executing that command
     elif "[up/down]" in command:
       if "up" in input_sentences[i]:
         var = "up"
@@ -81,13 +84,15 @@ for i, command in enumerate(solid_match):
         var = "down"
       else:
         var = "Unknown"
-        # TODO: GETVAR
-    # TODO: get optional{} vars from commands
+        # TODO: REPLACE ABOVE WITH 
+          # 1. Ask user to provide a correct input for this command
+          # 2. Call Speech to Text command
+          # 3. Preprocess text for passing to executing that command
+    # TODO: get optional{} vars from commands, this will depend on most likely command, and can be extrapolated to more simple function calls.
     print(f"current command: {input_sentences[i]}\n intepreted as: {command}\n has var: {var}")
 
 # Execute command
 
-    # run that command
-    # TODO: map command to function call
+    # TODO: run that command with passed variables.
 
 
