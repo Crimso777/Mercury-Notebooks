@@ -42,36 +42,51 @@ class notebook:
       return self.json.cells[i].source
 
    def insert_code_cell(self, source, i):
+      i1 = i
+      if i < 0:
+         i1 = self.total + i
+      if i1 > self.total:
+         i1 = self.total
+      if i1 < 0:
+         i1 = 0
       new_cell = nbformat.v4.new_code_cell(source = source)
-      self.json.cells.insert(i, new_cell)
+      self.json.cells.insert(i1, new_cell)
       self.total = self.total + 1
-      i1 = 0
-      while i1 < self.code_count:
-         if self.code_cells[i1] >= i:
-            break
-         i1 = i1 + 1
-      self.code_cells.insert(i1, i)
+      i2 = bisect(self.code_cells, i1)
+      self.code_cells.insert(i2, i1)
       self.code_count = self.code_count + 1
-      i1 = i1 + 1
-      while i1 < self.code_count:
-         self.code_cells[i1] = self.code_cells[i1] + 1
-         i1 = i1 + 1
+      while i2 < self.code_count:
+         self.code_cells[i2] = self.code_cells[i2] + 1
+         i2 = i2 + 1
+
+      i2 = bisect(self.text_cells, i1)
+      while i2 < self.text_count:
+         self.text_cells[i2] = self.text_cells[i2] + 1
+         i2 = i2 + 1
+
    
    def insert_text_cell(self, source, i):
+      i1 = i
+      if i < 0:
+         i1 = self.total + i
+      if i1 > self.total:
+         i1 = self.total
+      if i1 < 0:
+         i1 = 0
       new_cell = nbformat.v4.new_markdown_cell(source = source)
-      self.json.cells.insert(i, new_cell)
+      self.json.cells.insert(i1, new_cell)
       self.total = self.total + 1
-      i1 = 0
-      while i1 < self.text_count:
-         if self.text_cells[i1] >= i:
-            break
-         i1 = i1 + 1
-      self.text_cells.insert(i1, i)
+      i2 = bisect(self.code_cells, i1)
+      while i2 < self.code_count:
+         self.code_cells[i2] = self.code_cells[i2] + 1
+         i2 = i2 + 1
+
+      i2 = bisect(self.text_cells, i1)
+      self.text_cells.insert(i2, i1)
       self.text_count = self.text_count + 1
-      i1 = i1 + 1
-      while i1 < self.text_count:
-         self.text_cells[i1] = self.text_cells[i1] + 1
-         i1 = i1 + 1
+      while i2 < self.text_count:
+         self.text_cells[i2] = self.text_cells[i2] + 1
+         i2 = i2 + 1
 
    def delete_cell(self, i):
       i1 = i
