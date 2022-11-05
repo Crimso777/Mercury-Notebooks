@@ -92,6 +92,11 @@ class notebook:
       i1 = i
       if i < 0:
          i1 = self.total + i
+      if i1 > self.total:
+         i1 = self.total
+      if i1 < 0:
+         i1 = 0
+
       popped = self.json.cells.pop(i1)
       self.total = self.total - 1
       i2 = bisect(self.code_cells, i1)
