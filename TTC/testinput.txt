@@ -1,0 +1,16 @@
+create code cell
+create text cell
+
+insert code cell
+
+move code cell up
+
+delete cell 
+delete cell 2
+
+run cell
+
+run all cells
+run cells
+
+read cell
