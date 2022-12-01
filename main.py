@@ -2,6 +2,7 @@
 
 import keyboard
 from TTC import ClosestCommand
+from Collaborator.colab import notebook
 
 if __name__ == "__main__":
     # initiate Text to Commands class

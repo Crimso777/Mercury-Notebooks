@@ -1,4 +1,4 @@
-from collaborator.colab import notebook
+from Collaborator.colab import notebook
 
 nb = notebook("example")
 print(nb.read_code_cell(3))
