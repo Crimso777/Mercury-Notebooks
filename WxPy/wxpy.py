@@ -1,9 +1,31 @@
+from ahk import AHK
+from ahk.window import Window
+ahk = AHK()
+win = ahk.win_get(title='Accessible Google Colaboratory')  # by title
 import wx
+import threading
+import win32api
+import win32con
+import win32gui
+import os
+import accessible_output2.outputs.auto
+ao_output = accessible_output2.outputs.auto.Auto()
 
+
+hotkeys = {}
+hotkeys[wx.WXK_F1] = lambda: ao_output.output("Save file.", True)
+hotkeys[wx.WXK_F2] = lambda: ao_output.output("Load file.", True)
+
+hk_actions = {}
+hk_actions[wx.WXK_F1] = lambda: win.send("{F1}")
+hk_actions[wx.WXK_F1] = lambda: win.send("{F2}")
+
+###############################################################################
 class MyFrame(wx.Frame):
     def __init__(self, parent, title):
         super(MyFrame, self).__init__(parent, title=title, size = (700, 600))
         self.myGUI()
+        #self.setTransparent(4)
 
     def myGUI(self):
         menu_bar = wx.MenuBar()
@@ -22,7 +44,6 @@ class MyFrame(wx.Frame):
     def Quit(self, e):
         self.Close()
 
-
 class MyApp(wx.App):
     def OnInit(self):
         self.frame = MyFrame(parent=None, title="Accessible Google Colaboratory")
@@ -31,4 +52,5 @@ class MyApp(wx.App):
         return True
 
 app = MyApp()
+ao_output.output("Welcome to Accessible Google Colaboratory!", True)
 app.MainLoop()
