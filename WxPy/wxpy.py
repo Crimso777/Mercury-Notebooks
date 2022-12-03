@@ -31,6 +31,7 @@ class MyFrame(wx.Frame):
         menu_bar = wx.MenuBar()
         file_button = wx.Menu()
         
+        # Change these buttons to hotkeys for accessible purposes
         save_item = file_button.Append(wx.ID_EXIT, 'Save File','Saving ...')
         load_item = file_button.Append(wx.ID_EXIT, 'Load File','Loading ...')
         exit_item = file_button.Append(wx.ID_EXIT, 'Exit','Exiting ...')
