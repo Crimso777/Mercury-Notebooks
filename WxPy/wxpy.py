@@ -12,13 +12,13 @@ import accessible_output2.outputs.auto
 ao_output = accessible_output2.outputs.auto.Auto()
 
 
-hotkeys = {}
-hotkeys[wx.WXK_F1] = lambda: ao_output.output("Save file.", True)
-hotkeys[wx.WXK_F2] = lambda: ao_output.output("Load file.", True)
+#hotkeys = {}
+#hotkeys[wx.WXK_F1] = lambda: ao_output.output("Save file.", True)
+#hotkeys[wx.WXK_F2] = lambda: ao_output.output("Load file.", True)
 
-hk_actions = {}
-hk_actions[wx.WXK_F1] = lambda: win.send("{F1}")
-hk_actions[wx.WXK_F1] = lambda: win.send("{F2}")
+#hk_actions = {}
+#hk_actions[wx.WXK_F1] = lambda: win.send("{F1}")
+#hk_actions[wx.WXK_F1] = lambda: win.send("{F2}")
 
 ###############################################################################
 class MyFrame(wx.Frame):
