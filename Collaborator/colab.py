@@ -134,7 +134,7 @@ class notebook:
          i2 = i2 - 1
 
       type = self.get_cell_type(i1)
-      source = self.json.cells[i].source
+      source = self.json.cells[i1].source
       if type == "markdown":
          self.insert_text_cell(source, i2)      
       else:
@@ -203,7 +203,7 @@ class notebook:
       else:
          return False
 
-   def get_cell_outputs(i):
+   def get_cell_outputs(self, i):
       if self.get_cell_type(i) != "code":
          return []
       else:
