@@ -70,21 +70,27 @@ class TextToCommands:
   def runCommand(self, notebook, command, variable, op_var=None):
     if command == "Create new [type] Cell":
       if variable == "code":
-        notebook.insert_code_cell()
+        notebook.insert_code_cell(-1)
       elif variable == "text":
-        notebook.insert_text_cell()
+        notebook.insert_text_cell(-1)
     elif command == "Insert [type] Cell to {num/current_above}":
       pass
     elif command == "Move cell [up/down]":
       pass
     elif command == "delete cell {num/current cell}":
-      pass
+      if op_var != None:
+        notebook.delete_cell(op_var)
+      else:
+        notebook.delete_cell(-1)
     elif command == "run cell":
-      pass
+      notebook.run_cell(0)
     elif command == "run all cells":
-      pass
+      #find total number of cell
+      cell_num = 1
+      for x in range(cell_num):
+        notebook.run_cell(x)
     elif command == "read cell":
-      pass
+      notebook.read_cell(0)
     else:
       return "ERROR: NO COMMAND MATCHED"
 
