@@ -1,9 +1,12 @@
 import wx
 import os
+import os
+from gtts import gTTS
+import pyttsx3
 import accessible_output2.outputs.auto
 ao_output = accessible_output2.outputs.auto.Auto()
 import sys
-from stt_tts import SpeechToText
+from text_to_speech import SpeechToText
 
 ###############################################################################
 class MyFrame(wx.Frame):
