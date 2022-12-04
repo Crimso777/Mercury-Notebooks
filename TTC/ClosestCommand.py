@@ -65,4 +65,29 @@ class TextToCommands:
           # 3. Preprocess text for passing to executing that command
     # TODO: get optional{} vars from commands, this will depend on most likely command, and can be extrapolated to more simple function calls.
     print(f"current command: {solid_match}\n intepreted as: {matched_command}\n has var: {var}")
-    # TODO: run that command.
+    return var
+    
+  def runCommand(self, notebook, command, variable, op_var=None):
+    if command == "Create new [type] Cell":
+      if variable == "code":
+        notebook.insert_code_cell()
+      elif variable == "text":
+        notebook.insert_text_cell()
+    elif command == "Insert [type] Cell to {num/current_above}":
+      pass
+    elif command == "Move cell [up/down]":
+      pass
+    elif command == "delete cell {num/current cell}":
+      pass
+    elif command == "run cell":
+      pass
+    elif command == "run all cells":
+      pass
+    elif command == "read cell":
+      pass
+    else:
+      return "ERROR: NO COMMAND MATCHED"
+
+
+
+
